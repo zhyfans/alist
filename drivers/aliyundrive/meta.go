@@ -7,7 +7,8 @@ import (
 
 type Addition struct {
 	driver.RootID
-	RefreshToken   string `json:"refresh_token" required:"true"`
+	RefreshToken string `json:"refresh_token" required:"true"`
+	//DeviceID       string `json:"device_id" required:"true"`
 	OrderBy        string `json:"order_by" type:"select" options:"name,size,updated_at,created_at"`
 	OrderDirection string `json:"order_direction" type:"select" options:"ASC,DESC"`
 	RapidUpload    bool   `json:"rapid_upload"`
@@ -17,6 +18,9 @@ type Addition struct {
 var config = driver.Config{
 	Name:        "Aliyundrive",
 	DefaultRoot: "root",
+	Alert: `warning|There may be an infinite loop bug in this driver.
+Deprecated, no longer maintained and will be removed in a future version.
+We recommend using the official driver AliyundriveOpen.`,
 }
 
 func init() {
